@@ -202,7 +202,7 @@ function Board (options){
     }
 
     function buttonHTML(btnGroup, data, text){
-      return `<button type="button" class="btn btn-default btnGroup${btnGroup}" data=${data}>${text}</button>`
+      return `<button type="button" class="btn btn-default btn-lg btnGroup${btnGroup}" data=${data}>${text}</button>`
     }
 
     function htmlSpaces (times){
@@ -216,14 +216,14 @@ function Board (options){
     }
 
     function htmlQ1(){
-      return `<div id="view1"><p>Which do you prefer?\n</p>
+      return `<div id="view1"><h3>Which do you prefer?\n</h3>
       ${buttonHTML(1, "1player", "Man Against computer")}
       ${buttonHTML(1, "2players", "Man Against Man")}
       </div>`
     }
 
     function htmlQ2(){
-      const html2=`<div id="view2"><p>${!state.players[1].isComputer? "Player 1, <br />" : ""}Which symbols would you like to use?</p>
+      const html2=`<div id="view2"><h3>${!state.players[1].isComputer? "Player 1, <br />" : ""}Which symbols would you like to use?</h3>
       ${buttonHTML(2, "X", "X")}
       ${buttonHTML(2, "O", "O")}`
       return html2

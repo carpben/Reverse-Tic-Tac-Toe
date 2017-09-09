@@ -17,6 +17,8 @@ button {
   background-color: white !important;
   color:black !important;
   margin-top: 1em;
+  font-size: 18px;
+  padding: 9px; 
 }
 
 #gameView p, #resultView p  {
