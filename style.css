@@ -18,7 +18,7 @@ button {
   color:black !important;
   margin-top: 1em;
   font-size: 18px;
-  padding: 9px; 
+  padding: 9px;
 }
 
 #gameView p, #resultView p  {
@@ -50,6 +50,6 @@ button {
   border-bottom-right-radius: 10px;
 }
 
-.cell.winningLine {
+.cell.winningLine, .computer-won {
   color:red;
 }

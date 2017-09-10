@@ -240,7 +240,7 @@ function Board (options){
       let board = state.game._gameBoard.reduce(function(acc,curr,rowIndex){
           return acc + `<div id= "row${rowIndex}" class="row">${curr.map((str,colIndex)=>`<div class="cell col${colIndex}" data-row=${rowIndex} data-column=${colIndex}>${str}</div>`).join('')}</div>`
         }, ``)
-      let htmlAfter = `<p>Score: ${htmlSpaces(1)} Player 1 - ${state.players[0].score} ${htmlSpaces(1)} Player 2 - ${state.players[1].score}</p>`
+        let htmlAfter = `<h4>Score: ${htmlSpaces(1)} Player 1 - ${state.players[0].score} ${htmlSpaces(2)} ${state.players[1].isComputer? "Computer" : "Player 2" } - ${state.players[1].score}</h4>`
       return `<div id='gameView'> ${htmlBefore} <div id="board">${board}</div> ${htmlAfter} </div>`
     }
 
@@ -258,19 +258,19 @@ function Board (options){
 
       let {result, winningLine} = getResult(state.game._gameBoard, state.players[state.game.turn].symbol )
 
-      let resultText = "tie"
-      if(result !== RESULT.tie)
-        resultText = getPlayerName(result) + " won"
+      const winnerName = getPlayerName(result)
+      const computerWonClass = winnerName === "Computer"? "computer-won" : ""
+    //   let resultText = winnerName + " won"
 
 
-      let htmlBefore = `<h3>${resultText} ${htmlSpaces(2)} Click to restart </h3> `
+      let htmlBefore = `<h3><span class="${computerWonClass}"> ${winnerName} Won </span> ${htmlSpaces(2)} Click to restart </h3> `
       let board = state.game._gameBoard.reduce(function(acc,curr,rowIndex){
           return acc + `<div id="row${rowIndex}" class="row">${curr.map(
             (str,colIndex)=>
             `<div class="cell col${colIndex} ${winningLine.some(arr=>(arraysAreEqual(arr,[rowIndex,colIndex]))) ? "winningLine" : ""}"
               data-row=${rowIndex} data-column=${colIndex}>${str}</div>`).join('')}</div>`
         }, ``)
-      let htmlAfter = `<p>Score: ${htmlSpaces(1)} Player 1 - ${state.players[0].score} ${htmlSpaces(1)} Player 2 - ${state.players[1].score}</p>`
+      let htmlAfter = `<h4>Score: ${htmlSpaces(1)} Player 1 - ${state.players[0].score} ${htmlSpaces(2)} ${state.players[1].isComputer? "Computer" : "Player 2" } - ${state.players[1].score}</h4>`
       return `<div id='resultView'> ${htmlBefore} <div id="board">${board}</id> ${htmlAfter} </div>`
     }
 
