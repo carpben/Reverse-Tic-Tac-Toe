@@ -334,6 +334,7 @@ function Board (options){
     let result = getResult(board, symbol).result
 
     if (result === RESULT.incomplete){
+      state.game.turn = (state.game.turn+1)%2
       render()
     } else {
       //Increment score and show result
@@ -345,7 +346,7 @@ function Board (options){
       state.view = VIEW.result
       render()
     }
-    state.game.turn = (state.game.turn+1)%2
+
     if (result==RESULT.incomplete && state.players[state.game.turn].isComputer){
       doComputerMove()
     }
