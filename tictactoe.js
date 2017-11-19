@@ -65,7 +65,7 @@ function Board (options){
 
       let result = RESULT.incomplete
       if (moveCount(board)<5){
-        {result}
+        return {result}
       }
 
       const otherSymbol = symbol==='X'? 'O' : 'X';
